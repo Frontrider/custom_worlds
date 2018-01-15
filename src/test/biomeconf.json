@@ -1,0 +1,55 @@
+{
+  "hostile": [
+    null,
+    null,
+    null
+  ],
+  "animal": [
+    {
+      "name": "minecraft:cow",
+      "weight": 1
+    },
+    {
+      "name": "minecraft:cow",
+      "weight": 1
+    },
+    {
+      "name": "minecraft:cow",
+      "weight": 1
+    }
+  ],
+  "water": [
+    null,
+    null,
+    null
+  ],
+  "ambient": [
+    null,
+    null,
+    null
+  ],
+  "baseHeight": 1.0,
+  "heightVariation": 1.0,
+  "raindisabled": false,
+  "snowenabled": false,
+  "watercolor": {
+    "r": 255,
+    "g": 255,
+    "b": 255
+  },
+  "tempature": 1.0,
+  "skycolor": {
+    "r": 255,
+    "g": 255,
+    "b": 255
+  },
+  "surface": {
+    "blockname": "minecraft:stone",
+    "meta": 0
+  },
+  "filler": {
+    "blockname": "minecraft:stone",
+    "meta": 0
+  },
+  "name": "default"
+}

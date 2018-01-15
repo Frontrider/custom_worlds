@@ -1,0 +1,15 @@
+{
+  "sealevel": 60,
+  "material": {
+    "blockname": "minecraft:stone",
+    "meta": 0
+  },
+  "fluid": {
+    "blockname": "minecraft:water",
+    "meta": 0
+  },
+  "biomes": [
+    "minecraft:mesa"
+  ],
+  "dimensiontype": "default"
+}
