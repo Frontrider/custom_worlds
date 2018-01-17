@@ -1,5 +1,8 @@
 package hu.frontrider.worlds.config;
 
+import hu.frontrider.worlds.util.NameHelper;
+import net.minecraft.block.state.IBlockState;
+
 /**
  * Created by frontrider on 2018.01.13..
  */
@@ -25,5 +28,10 @@ public class BlockHolder {
     {
         blockname = modid+":"+name;
         this.meta = meta;
+    }
+
+    public IBlockState getBlock()
+    {
+        return NameHelper.getBlockFromName(blockname,meta);
     }
 }

@@ -9,4 +9,5 @@ public class DimensionHolder {
     public BlockHolder fluid;
     public String[] biomes;
     public String dimensiontype = "default";
+    public int id=-1;
 }

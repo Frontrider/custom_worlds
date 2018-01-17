@@ -34,7 +34,7 @@ public class ExtendedBiomeProperties extends Biome.BiomeProperties {
             setRainDisabled();
         if(configHolder.snowenabled)
             setSnowEnabled();
-        setTemperature(configHolder.tempature);
+        setTemperature(configHolder.temperature);
         setWaterColor(configHolder.watercolor.getColor());
         skyColor = configHolder.skycolor.getColor();
         name = configHolder.name;

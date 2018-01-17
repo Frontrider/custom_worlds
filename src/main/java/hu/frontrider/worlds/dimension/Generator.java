@@ -1,9 +1,13 @@
 package hu.frontrider.worlds.dimension;
 
+import hu.frontrider.worlds.config.DimensionHolder;
+import hu.frontrider.worlds.util.NameHelper;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
 
@@ -15,11 +19,15 @@ import java.util.Random;
  */
 public abstract class Generator {
 
-    protected final double[] heightMap;
+    protected double[] heightMap;
 
     protected final float[] biomeWeights;
     protected World world;
     protected Random random;
+
+    protected IBlockState material;
+    protected IBlockState fluid;
+    protected int sealevel = 60;
 
 
     protected NoiseGeneratorOctaves minLimitPerlinNoise;
@@ -34,9 +42,13 @@ public abstract class Generator {
     protected double[] depthBuffer = new double[256];
     protected Biome[] biomesForGeneration;
 
-    public Generator(World world) {
+    public Generator(World world, DimensionHolder settings) {
         random = new Random(world.getSeed());
         this.heightMap = new double[825];
+
+        material = settings.material.getBlock();
+        fluid = settings.fluid.getBlock();
+        sealevel = settings.sealevel;
 
         this.biomeWeights = new float[25];
         for (int j = -2; j <= 2; ++j) {
@@ -64,7 +76,7 @@ public abstract class Generator {
 
                 for (int l1 = -b0; l1 <= b0; ++l1) {
                     for (int i2 = -b0; i2 <= b0; ++i2) {
-                        Biome biome = this.biomesForGeneration[j1 + 2 + (k1 + 2) * 10];
+                        Biome biome = this.biomesForGeneration[0];
                         float baseHeight = biome.getBaseHeight();
                         float variation = biome.getHeightVariation();
 
@@ -134,6 +146,34 @@ public abstract class Generator {
             }
         }
     }
+    public void setup(World world, Random rand) {
+        this.world = world;
+        this.random = rand;
 
+        this.minLimitPerlinNoise = new NoiseGeneratorOctaves(rand, 16);
+        this.maxLimitPerlinNoise = new NoiseGeneratorOctaves(rand, 16);
+        this.mainPerlinNoise = new NoiseGeneratorOctaves(rand, 8);
+        this.surfaceNoise = new NoiseGeneratorPerlin(rand, 4);
+        NoiseGeneratorOctaves noiseGen5 = new NoiseGeneratorOctaves(rand, 10);
+        this.depthNoise = new NoiseGeneratorOctaves(rand, 16);
+        NoiseGeneratorOctaves mobSpawnerNoise = new NoiseGeneratorOctaves(rand, 8);
+
+        net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextOverworld ctx =
+                new net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextOverworld(minLimitPerlinNoise, maxLimitPerlinNoise, mainPerlinNoise, surfaceNoise, noiseGen5, depthNoise, mobSpawnerNoise);
+        ctx = net.minecraftforge.event.terraingen.TerrainGen.getModdedNoiseGenerators(world, rand, ctx);
+        this.minLimitPerlinNoise = ctx.getLPerlin1();
+        this.maxLimitPerlinNoise = ctx.getLPerlin2();
+        this.mainPerlinNoise = ctx.getPerlin();
+        this.surfaceNoise = ctx.getHeight();
+//        this.field_185983_b = ctx.getScale();
+        this.depthNoise = ctx.getDepth();
+//        this.field_185985_d = ctx.getForest();
+    }
     public abstract void generate(int chunkX, int chunkZ, ChunkPrimer primer);
+
+    public void setBiomesForGeneration(Biome[] biomesForGeneration) {
+        this.biomesForGeneration = biomesForGeneration;
+    }
+
+    public abstract void replaceBiomeBlocks(int x, int z, ChunkPrimer chunkprimer, IChunkGenerator chunkProvider, Biome[] biomesForGeneration);
 }

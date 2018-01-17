@@ -14,7 +14,7 @@ public class DimConfig {
 
         DimensionHolder holder = new DimensionHolder();
         holder.material = new BlockHolder();
-        holder.fluid = new BlockHolder("minecraft:water");
+        holder.fluid = new BlockHolder("minecraft:water_mobs");
         holder.biomes = new String[] {"minecraft:mesa"};
         Gson json =  new GsonBuilder().setPrettyPrinting().create();
         String print = json.toJson(holder);
@@ -31,13 +31,13 @@ public class DimConfig {
         biomeConfigHolder.watercolor = new ColorHolder();
         biomeConfigHolder.filler= new BlockHolder();
         biomeConfigHolder.surface= new BlockHolder();
-        biomeConfigHolder.water = new SpawnableHolder[3];
-        biomeConfigHolder.ambient = new SpawnableHolder[3];
-        biomeConfigHolder.hostile = new SpawnableHolder[3];
-        biomeConfigHolder.animal  = new SpawnableHolder[3];
-        biomeConfigHolder.animal[0] = new SpawnableHolder();
-        biomeConfigHolder.animal[1] = new SpawnableHolder();
-        biomeConfigHolder.animal[2] = new SpawnableHolder();
+        biomeConfigHolder.water_mobs = new SpawnableHolder[3];
+        biomeConfigHolder.ambient_mobs = new SpawnableHolder[3];
+        biomeConfigHolder.hostile_mobs = new SpawnableHolder[3];
+        biomeConfigHolder.animal_mobs = new SpawnableHolder[3];
+        biomeConfigHolder.animal_mobs[0] = new SpawnableHolder();
+        biomeConfigHolder.animal_mobs[1] = new SpawnableHolder();
+        biomeConfigHolder.animal_mobs[2] = new SpawnableHolder();
         print = json.toJson(biomeConfigHolder);
         ShortHands.log(print);
         file = new PrintWriter("./biomeconf.json","utf8");

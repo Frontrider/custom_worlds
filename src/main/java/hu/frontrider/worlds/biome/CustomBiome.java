@@ -1,6 +1,7 @@
 package hu.frontrider.worlds.biome;
 
 import hu.frontrider.worlds.Worlds;
+import hu.frontrider.worlds.util.StringUtils;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.Biome;
 
@@ -11,12 +12,17 @@ import java.util.List;
  */
 public class CustomBiome extends Biome {
 
-    ExtendedBiomeProperties biomeproperties;
 
-    public CustomBiome(ExtendedBiomeProperties biomeProperties) {
-        super(biomeProperties);
-        this.biomeproperties = biomeProperties;
-        setRegistryName(Worlds.MODID+":"+biomeProperties.name.toLowerCase().replace(" ","_"));
+    private final int skyColor;
+
+    public CustomBiome(ExtendedBiomeProperties biomeproperties) {
+        super(biomeproperties);
+        setRegistryName(Worlds.MODID+":"+ StringUtils.clean(biomeproperties.name));
+        this.spawnableWaterCreatureList = biomeproperties.water;
+        this.spawnableMonsterList = biomeproperties.hostile;
+        this.spawnableCaveCreatureList = biomeproperties.ambient;
+        this.spawnableCreatureList = biomeproperties.neutral;
+        this.skyColor = biomeproperties.skyColor;
     }
 
     @Override
@@ -24,15 +30,15 @@ public class CustomBiome extends Biome {
      switch (type)
      {
          case AMBIENT:
-              return biomeproperties.ambient;
+              return spawnableCaveCreatureList;
          case MONSTER:
-             return biomeproperties.hostile;
+             return spawnableMonsterList;
 
          case CREATURE:
-             return biomeproperties.neutral;
+             return spawnableCreatureList;
 
          case WATER_CREATURE:
-             return biomeproperties.water;
+             return spawnableWaterCreatureList;
 
      }
      return null;
@@ -40,7 +46,7 @@ public class CustomBiome extends Biome {
 
     @Override
     public int getSkyColorByTemp(float p_getSkyColorByTemp_1_) {
-        return biomeproperties.skyColor;
+        return skyColor;
     }
 
 

@@ -19,10 +19,6 @@ import java.io.InputStreamReader;
 
 @SuppressWarnings("ConstantConditions")
 public class BiomeRegistry {
-/**
-*Variable to hold the count of the registered biomes.
-*/
- public static final int biomeCount = 16;
 
 
     /**
