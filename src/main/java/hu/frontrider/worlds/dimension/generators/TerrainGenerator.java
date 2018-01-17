@@ -3,6 +3,7 @@ package hu.frontrider.worlds.dimension.generators;
 import hu.frontrider.worlds.config.DimensionHolder;
 import hu.frontrider.worlds.dimension.ChunkProvider;
 import hu.frontrider.worlds.dimension.Generator;
+import hu.frontrider.worlds.registry.DimensionRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -22,10 +23,7 @@ import static hu.frontrider.worlds.registry.BiomeRegistry.biomes;
 
 public class TerrainGenerator extends Generator{
 
-    private final float[] biomeWeights;
-    private double[] depthBuffer = new double[256];
-
-    public TerrainGenerator(World world, DimensionHolder settings) {
+    public TerrainGenerator(World world,DimensionHolder settings) {
         super(world,settings);
         this.heightMap = new double[825];
 

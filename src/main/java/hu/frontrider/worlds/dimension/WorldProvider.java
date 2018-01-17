@@ -1,5 +1,6 @@
 package hu.frontrider.worlds.dimension;
 
+import hu.frontrider.worlds.biome.BiomeProviderCustom;
 import hu.frontrider.worlds.dimension.generators.TerrainGenerator;
 import hu.frontrider.worlds.registry.DimensionRegistry;
 import net.minecraft.init.Biomes;
@@ -33,11 +34,11 @@ public class WorldProvider extends net.minecraft.world.WorldProvider {
 
     @Override
     public IChunkGenerator createChunkGenerator() {
-        return new ChunkProvider(world, new TerrainGenerator(world, DimensionRegistry.dimensionmap.get(type.getId())));
+        return new ChunkProvider(world,DimensionRegistry.dimensionmap.get(type.getId()));
     }
 
     @Override
     public BiomeProvider getBiomeProvider() {
-        return new BiomeProviderSingle(Biomes.OCEAN);
+        return new BiomeProviderCustom(world.getWorldInfo());
     }
 }

@@ -21,14 +21,13 @@ public abstract class Generator {
 
     protected double[] heightMap;
 
-    protected final float[] biomeWeights;
+    protected float[] biomeWeights;
     protected World world;
     protected Random random;
 
     protected IBlockState material;
     protected IBlockState fluid;
-    protected int sealevel = 60;
-
+    protected int sealevel;
 
     protected NoiseGeneratorOctaves minLimitPerlinNoise;
     protected NoiseGeneratorOctaves maxLimitPerlinNoise;
