@@ -1,15 +1,17 @@
 {
-  "sealevel": 60,
+  "sealevel": 60,//works
   "material": {
-    "blockname": "minecraft:stone",
-    "meta": 0
+    "blockname": "minecraft:stone", //works
+    "meta": 2 //works
   },
   "fluid": {
-    "blockname": "minecraft:water",
-    "meta": 0
+    "blockname": "thermalfoundation:fluid_crude_oil",//works
+    "meta": 0 //works
   },
   "biomes": [
-    "minecraft:mesa"
+    "minecraft:ocean" //not yet implemented
   ],
-  "dimensiontype": "default"
+  "dimensiontype": "fluidworld",//works
+  "id": 2 /*this tag was generated automatically. If you change it you might loose your dimension.
+            Altough, you can change the rest freely, chunk cliffs will only occur if the biome list was changed drastically.*/
 }
