@@ -1,0 +1,35 @@
+{
+  "biomes": [
+    {
+      "name": "minecraft:plains",
+      "chance": 1,
+      "order": 0
+    },
+    {
+      "name": "minecraft:extreme_hills",
+      "chance": 1,
+      "order": 0
+    },
+    {
+      "name": "minecraft:forest",
+      "chance": 1,
+      "order": 0
+    }
+  ],
+  "ocean": [
+    {
+      "name": "minecraft:ocean",
+      "chance": 1,
+      "order": 0
+    }
+  ],
+  "beach": [
+    {
+      "name": "minecraft:beach",
+      "chance": 1,
+      "order": 0
+    }
+  ],
+  "ignoreTempatures": false,
+  "largeOceans": false
+}

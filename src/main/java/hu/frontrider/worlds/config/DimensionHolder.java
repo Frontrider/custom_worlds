@@ -7,7 +7,7 @@ public class DimensionHolder {
     public int sealevel=60;
     public BlockHolder material;
     public BlockHolder fluid;
-    public String[] biomes;
     public String dimensiontype = "default";
     public int id=-1;
+    public BiomeGenRule biomeGenRule = new BiomeGenRule();
 }

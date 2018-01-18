@@ -18,7 +18,6 @@ public class DimConfig {
         DimensionHolder holder = new DimensionHolder();
         holder.material = new BlockHolder();
         holder.fluid = new BlockHolder("minecraft:water_mobs");
-        holder.biomes = new String[] {"minecraft:mesa"};
         Gson json =  new GsonBuilder().setPrettyPrinting().create();
         String print = json.toJson(holder);
 
