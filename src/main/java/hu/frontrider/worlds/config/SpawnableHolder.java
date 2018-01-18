@@ -8,6 +8,4 @@ public class SpawnableHolder {
     public String name = "Cow";
     public int weight = 1;
 
-
-
 }

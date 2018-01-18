@@ -19,11 +19,12 @@ public class Worlds
 {
     public static final String MODID = "custom_worlds";
     public static final String NAME = "Custom Worlds";
-    public static final String VERSION = "0.2-SNAPSHOT";
+    public static final String VERSION = "0.3-SNAPSHOT";
 
     public static File configdir;
     public static Logger modLog;
-    @Mod.EventHandler
+
+    @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         modLog= event.getModLog();
@@ -37,20 +38,20 @@ public class Worlds
         BiomeRegistry.preinit(event);
     }
 
-    @Mod.EventHandler
+    @EventHandler
     public void init(FMLInitializationEvent event)
     {
         System.out.println("Custom worlds initialising");
         DimensionRegistry.init(event);
     }
 
-    @Mod.EventHandler
+    @EventHandler
     public static void onRegisterBiomes(RegistryEvent.Register<Biome> event)
     {
         System.out.println("registering biomes");
         event.getRegistry().registerAll(BiomeRegistry.biomes);
     }
-    @Mod.EventHandler
+    @EventHandler
     public void serverLoad(FMLServerStartingEvent event) {
 
         event.registerServerCommand(new DimList());
