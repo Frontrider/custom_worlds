@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * The working of the BiomeProvider:
  * it has a biome array, indexed according to the tempature.
- * Genlayer(s?) output ints indexing the biome array.
+ * Genlayer(s?) output ints indexing the biome array, giving the biomes back.
  * */
 
 public class BiomeProviderTest {

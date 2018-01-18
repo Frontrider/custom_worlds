@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "custom_worlds",
+  "name": "Custom Worlds",
+  "description": "Mod to create custom biomes and dimension using json files",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["TheFrontrider"],
+  "credits": "TeamCOFH for their help, zmaster587 for letting me look into his mod",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
